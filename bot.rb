@@ -15,6 +15,12 @@ bot.get_updates(fail_silently: true) do |message|
     when /vamofuma/i
         greetings = ['ihiii', 'vamfuma', 'cade', 'q', 'vamo']
         reply.text = "#{greetings.sample.capitalize}, #{message.from.first_name}!"
+    when /conferir/i
+      RubyPython.start
+      TUYOBOTSHEET = RubyPython.import('TUYOBOTSHEET')
+      puts TUYOBOTSHEET.run().rubify #pegar infos da planilha da loja
+      
+      RubyPython.stop
   
       else
         reply.text = "q q c falou? eu nao sei o que é #{command.inspect}."
